@@ -1,9 +1,16 @@
 @extends('employees.layout')
 @section('content')
 <div class="container-fluid mt-5">
+    <?php
+    // Retrieve user data from session
+    $session = session();
+    $adminData = $session->get('admin_data');
+    // print_r($userData);
+    ?>
     <div class="row d-flex justify-content-center">
 
         <div class="col-md-9">
+            <h5 class="mt-3 mb-3">Welcome: <span class="text-success"><b><?php echo $adminData['name']; ?></b></span></h5>
             <div class="card">
                 <div class="card-header">
                     <h4><b>Employee Details</b></h4>

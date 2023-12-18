@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class RegisterModel extends Model
 {
-    protected $table = 'userstable';
-    protected $fillable = ['name','email','file_name'];
+    
+    protected $table = 'adminregister';
+    protected $primaryKey = 'id';
+    protected $fillable = ['email', 'passoword', 'name'];
+
+    use HasFactory;
 }

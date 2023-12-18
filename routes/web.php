@@ -16,8 +16,11 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('register');
+    return view('login');
 });
-Route::resource("/saveRegister", RegisterController::class);
 
+Route::resource('/register', RegisterController::class);
+Route::post('/RegisterProcess', [RegisterController::class,'store']);
+
+Route::post('/login', [RegisterController::class,'login']);
 Route::resource("/employee", EmployeeController::class);

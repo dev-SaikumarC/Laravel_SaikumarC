@@ -14,21 +14,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-center mt-3 mb-4">Register</h3>
+                <h3 class="text-center mt-3 mb-4">Login</h3>
 
-                <form method="post" id="register-form" enctype="multipart/form-data"
-                    action="{{ url('RegisterProcess') }}">
+                <form method="post" id="register-form" enctype="multipart/form-data" action="{{ url('login') }}">
                     @csrf
                     <div class="row">
                         <div class="col-md-4 mb-2">
                         </div>
                         <div class="col-md-4 ">
                             <div class="card" style="padding:15px;">
-                                <div class="form-group mb-3">
-                                    <label for="name"> Name</label>
-                                    <input type="text" class="form-control" name="name" id="name"
-                                        aria-describedby="nameHelp" placeholder="Enter Name" required>
-                                </div>
                                 <div class="form-group mb-3">
                                     <label for="email"> Email</label>
                                     <input type="email" class="form-control" name="email" id="email"
@@ -40,8 +34,13 @@
                                         aria-describedby="nameHelp" placeholder="Enter Password" required>
                                 </div><br>
                                 <div class="form-group mb-2 text-center">
-                                    <button type="submit" class="btn btn-success w-100">Register</button>
+                                    <button type="submit" class="btn btn-success w-100">Login</button>
+                                    <h6 class="text-danger text-start">
+                                        <?php echo session('error') ?>
+                                    </h6>
                                 </div>
+                                <h6 style="font-size:15px;">New User? <a href="{{ url('register') }}"
+                                        class="text-success">Click here to Register</a></h6>
                             </div>
                         </div>
                         <div class="col-md-4 mb-2">
@@ -60,25 +59,5 @@
         </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
-<!-- <script>
-    function saveRegister(e)
-    {
-        e.preventDefault();
-        console.log($('#register-form'));
-        var registerData = $('#register-form')[0];
-        var formData = new FormData(registerData);
-
-        $.ajax({
-            url:"{{url('saveRegister')}}",
-            method:"POST",
-            data:formData,
-            contentType:false,
-            processData:false,
-            success:function(response){
-                console.log(response);
-            }
-        })
-    }
-</script> -->
 
 </html>
