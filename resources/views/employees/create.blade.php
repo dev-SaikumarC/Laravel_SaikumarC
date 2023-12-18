@@ -7,19 +7,25 @@
     <div class="card-header"><b>Create Employee</b></div>
     <div class="card-body">
 
-      <form action="{{ url('employee') }}" method="post">
+      <form action="{{ url('employee') }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
         <label>Name</label></br>
-        <input type="text" name="name" id="name" class="form-control"></br>
+        <input type="text" name="name" id="name" class="form-control" required></br>
         <label>Address</label></br>
-        <input type="text" name="address" id="address" class="form-control"></br>
+        <input type="text" name="address" id="address" class="form-control" required></br>
         <label>Mobile</label></br>
-        <input type="text" name="mobile" id="mobile" class="form-control"></br>
+        <input type="text" name="mobile" id="mobile" class="form-control" required></br>
+        <label for="profile_image">Profile Picture</label></br>
+        <input type="file" class="form-control" name="profile_image" id="profile_image" required></br>
+        <h6 class="text-danger">
+          <?php echo session('error_message') ?>
+        </h6><br>
         <input type="submit" value="Save" class="btn btn-success" style="width:200px;"></br>
-      </form>
-
     </div>
+    </form>
+
   </div>
+</div>
 
 </div>
 

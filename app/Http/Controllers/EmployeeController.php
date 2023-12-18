@@ -8,6 +8,8 @@ use App\Models\Employee;
 
 use Illuminate\Http\Request;
 
+// use Illuminate\Http\UploadedFile;
+
 class EmployeeController extends Controller
 {
     /**
@@ -30,11 +32,58 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    // public function store(Request $request): RedirectResponse
+    // {
+    //     // $input = $request->all();
+    //     // Employee::create($input);
+    //     // return redirect('employee')->with('flash_message', 'Employee Addedd!');
+    //     $inputArr = $request->all();
+    //     $filename = '';
+    //     if ($request->hasFile('profile_image')) {
+    //         $image = $request->file('profile_image');
+    //         $filename = $image->getClientOriginalName();
+    //         $image->move('uploads', $filename);
+    //     }
+
+    //     Employee::insert([
+    //         'name' => $inputArr['name'],
+    //         'address' => $inputArr['address'],
+    //         'mobile' => $inputArr['mobile'],
+    //         'profile_image' => $filename,
+    //     ]);
+    //     return redirect('employee')->with('flash_message', 'Employee Addedd!');
+    //     // print_r($filename);
+    // }
+
+
+    public function store(Request $request)
     {
-        $input = $request->all();
-        Employee::create($input);
-        return redirect('employee')->with('flash_message', 'Employee Addedd!');
+        $inputArr = $request->all();
+        $filename = '';
+
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+
+            // Check if the uploaded file is an image
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+            $extension = $image->getClientOriginalExtension();
+
+            if (!in_array(strtolower($extension), $allowedExtensions)) {
+                return redirect('employee/create')->with('error_message', 'Invalid file type. Please upload an image.');
+            }
+
+            $filename = $image->getClientOriginalName();
+            $image->move('uploads', $filename);
+        }
+
+        Employee::insert([
+            'name' => $inputArr['name'],
+            'address' => $inputArr['address'],
+            'mobile' => $inputArr['mobile'],
+            'profile_image' => $filename,
+        ]);
+
+        return redirect('employee')->with('flash_message', 'Employee Added!');
     }
 
     /**
@@ -60,10 +109,40 @@ class EmployeeController extends Controller
     public function update(Request $request, string $id): RedirectResponse
     {
         $employee = Employee::find($id);
-        $input = $request->all();
-        $employee->update($input);
+
+        // if (!$employee) {
+        //     // Handle the case where the employee with the given ID is not found.
+        //     return redirect('employee')->with('error_message', 'Employee not found.');
+        // }
+
+        $inputArr = $request->all();
+        $filename = '';
+
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+
+            // Check if the uploaded file is an image
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+            $extension = $image->getClientOriginalExtension();
+
+            if (!in_array(strtolower($extension), $allowedExtensions)) {
+                return redirect('/employee/' . $id . '/edit')->with('error_message', 'Invalid file type. Please upload an image.');
+            }
+
+            $filename = $image->getClientOriginalName();
+            $image->move('uploads', $filename);
+        }
+
+        $employee->update([
+            'name' => $inputArr['name'],
+            'address' => $inputArr['address'],
+            'mobile' => $inputArr['mobile'],
+            'profile_image' => $filename,
+        ]);
+
         return redirect('employee')->with('flash_message', 'Employee Updated!');
     }
+
 
     /**
      * Remove the specified resource from storage.

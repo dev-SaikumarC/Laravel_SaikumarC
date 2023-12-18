@@ -11,7 +11,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
         @yield('content')
     </div>
 
@@ -26,6 +26,11 @@
             $('.modal').modal();
         });
     </script>
+    <style>
+        tr {
+            vertical-align: middle;
+        }
+    </style>
 </body>
 
-</html> 
+</html>
