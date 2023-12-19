@@ -8,9 +8,29 @@
     // print_r($userData);
     ?>
     <div class="row d-flex justify-content-center">
-
         <div class="col-md-9">
-            <h5 class="mt-3 mb-3">Welcome: <span class="text-success"><b><?php echo $adminData['name']; ?></b></span></h5>
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="mt-3 mb-3">Welcome: <span class="text-success"><b>
+                                <?php echo $adminData['name']; ?>
+                            </b>
+                        </span>
+                    </h5>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <?php if ($adminData['state'] == '1') : ?>
+                    <a href="{{ url('/updateProfile') }}" class="btn btn-success btn-sm mb-3 mt-2" style="width:200px;"
+                        title="Add New Employeee"> Update Profile
+                    </a>
+                    <?php endif; ?>
+                    <?php if ($adminData['state'] == '0') : ?>
+                    <a href="{{ url('/createProfile') }}" class="btn btn-success btn-sm mb-3 mt-2" style="width:200px;"
+                        title="Add New Employeee"> Create Profile
+                    </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="card-header">
                     <h4><b>Employee Details</b></h4>

@@ -18,7 +18,7 @@
 
                 <form method="post" id="register-form" enctype="multipart/form-data"
                     action="{{ url('RegisterProcess') }}">
-                    @csrf
+                    {!! csrf_field() !!}
                     <div class="row">
                         <div class="col-md-4 mb-2">
                         </div>
@@ -27,17 +27,29 @@
                                 <div class="form-group mb-3">
                                     <label for="name"> Name</label>
                                     <input type="text" class="form-control" name="name" id="name"
-                                        aria-describedby="nameHelp" placeholder="Enter Name" required>
+                                        aria-describedby="nameHelp" placeholder="Enter Name" required
+                                        value="{{ old('name') }}">
+                                    @error('name')
+                                    <p class="" style="color:red">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="email"> Email</label>
                                     <input type="email" class="form-control" name="email" id="email"
-                                        aria-describedby="emailHelp" placeholder="Enter email" required>
+                                        aria-describedby="emailHelp" placeholder="Enter email" required
+                                        value="{{ old('email') }}">
+                                    @error('email')
+                                    <p class="" style="color:red">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="password"> Password</label>
                                     <input type="password" class="form-control" name="password" id="password"
-                                        aria-describedby="nameHelp" placeholder="Enter Password" required>
+                                        aria-describedby="nameHelp" placeholder="Enter Password" required
+                                        value="{{ old('password') }}">
+                                    @error('password')
+                                    <p class="" style="color:red">{{ $message }}</p>
+                                    @enderror
                                 </div><br>
                                 <div class="form-group mb-2 text-center">
                                     <button type="submit" class="btn btn-success w-100">Register</button>

@@ -17,7 +17,7 @@
                 <h3 class="text-center mt-3 mb-4">Login</h3>
 
                 <form method="post" id="register-form" enctype="multipart/form-data" action="{{ url('login') }}">
-                    @csrf
+                    {!! csrf_field() !!}
                     <div class="row">
                         <div class="col-md-4 mb-2">
                         </div>
@@ -26,18 +26,23 @@
                                 <div class="form-group mb-3">
                                     <label for="email"> Email</label>
                                     <input type="email" class="form-control" name="email" id="email"
-                                        aria-describedby="emailHelp" placeholder="Enter email" required>
+                                        aria-describedby="emailHelp" placeholder="Enter email" required
+                                        value="<?php echo session('emailvalue') ?>">
+                                    <h6 style="color:red;"> <?php echo session('error_email') ?></h6>
+
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group">
                                     <label for="password"> Password</label>
                                     <input type="password" class="form-control" name="password" id="password"
-                                        aria-describedby="nameHelp" placeholder="Enter Password" required>
+                                        aria-describedby="nameHelp" placeholder="Enter Password" required
+                                        value="{{ old('password') }}">
+
+                                    <h6 style="color:red;">
+                                        <?php echo session('passerror') ?>
+                                    </h6>
                                 </div><br>
                                 <div class="form-group mb-2 text-center">
                                     <button type="submit" class="btn btn-success w-100">Login</button>
-                                    <h6 class="text-danger text-start">
-                                        <?php echo session('error') ?>
-                                    </h6>
                                 </div>
                                 <h6 style="font-size:15px;">New User? <a href="{{ url('register') }}"
                                         class="text-success">Click here to Register</a></h6>

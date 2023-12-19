@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,9 @@ Route::post('/RegisterProcess', [RegisterController::class,'store']);
 
 Route::post('/login', [RegisterController::class,'login']);
 Route::resource("/employee", EmployeeController::class);
+
+Route::resource('/createProfile', ProfileController::class);
+Route::post('/profileCreate', [ProfileController::class,'store']);
+
+Route::get('/updateProfile', [ProfileController::class, 'edit']);
+Route::post('/profileUpdate', [ProfileController::class,'update']);
