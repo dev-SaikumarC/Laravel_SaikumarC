@@ -73,11 +73,13 @@ class RegisterController extends Controller
         }
 
     }
-    public function logout(): RedirectResponse
+    public function logout(Request $request): RedirectResponse
     {
-        Auth::logout();
+        // Auth::logout();
+        $request->session()->forget('admin_data');
         return redirect('/');
     }
+
     /**
      * Show the form for creating a new resource.
      */

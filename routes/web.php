@@ -16,20 +16,23 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
+
 Route::get('/', function () {
     return view('login');
 });
 
+Route::post('/login', [RegisterController::class, 'login']);
+
 Route::resource('/register', RegisterController::class);
-Route::post('/RegisterProcess', [RegisterController::class,'store']);
+Route::post('/RegisterProcess', [RegisterController::class, 'store']);
 
-Route::post('/login', [RegisterController::class,'login']);
-Route::resource("/employee", EmployeeController::class);
+// Route::post('/login', [RegisterController::class, 'login']);
+Route::resource("/employee", EmployeeController::class)->middleware('customauth');
 
-Route::resource('/createProfile', ProfileController::class);
-Route::post('/profileCreate', [ProfileController::class,'store']);
+Route::resource('/createProfile', ProfileController::class)->middleware('customauth');;
+Route::post('/profileCreate', [ProfileController::class, 'store']);
 
-Route::get('/updateProfile', [ProfileController::class, 'edit']);
-Route::post('/profileUpdate', [ProfileController::class,'update']);
+Route::get('/updateProfile', [ProfileController::class, 'edit'])->middleware('customauth');;
+Route::post('/profileUpdate', [ProfileController::class, 'update']);
 
-Route::get('/logout', [RegisterController::class,'logout']);
+Route::get('/logout', [RegisterController::class, 'logout']);
