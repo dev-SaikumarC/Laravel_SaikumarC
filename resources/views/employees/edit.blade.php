@@ -11,13 +11,13 @@
       <form action="{{ url('employee/' .$employees->id) }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
         @method("PATCH")
-        <input type="hidden" name="id" id="id" value="{{$employees->id}}" id="id" />
+        <input type="hidden" name="id" id="id" value="{{$employees->id}}" id="id" required/>
         <label>Name</label></br>
-        <input type="text" name="name" id="name" value="{{$employees->name}}" class="form-control"></br>
+        <input type="text" name="name" id="name" value="{{$employees->name}}" class="form-control" required></br>
         <label>Address</label></br>
-        <input type="text" name="address" id="address" value="{{$employees->address}}" class="form-control"></br>
+        <input type="text" name="address" id="address" value="{{$employees->address}}" class="form-control" required></br>
         <label>Mobile</label></br>
-        <input type="text" name="mobile" id="mobile" value="{{$employees->mobile}}" class="form-control"></br>
+        <input type="text" name="mobile" id="mobile" value="{{$employees->mobile}}" class="form-control" required></br>
         <label for="profile_image">Profile Picture</label></br>
         <img src="/uploads/{{ $employees->profile_image }}" class="mt-4 mb-4" style="height:100px;">
         <input type="file" class="form-control" name="profile_image" id="profile_image" required></br>

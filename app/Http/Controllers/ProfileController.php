@@ -90,7 +90,7 @@ class ProfileController extends Controller
 
         $inputArr = $request->all();
         $filename = '';
-        
+
         $id = $inputArr['admin_id'];
         $admin = ProfileModel::find($id);
 
@@ -107,6 +107,8 @@ class ProfileController extends Controller
 
             $filename = $image->getClientOriginalName();
             $image->move('uploads', $filename);
+        } else {
+            $filename = $admin['profile_image'];
         }
 
         $admin->update([

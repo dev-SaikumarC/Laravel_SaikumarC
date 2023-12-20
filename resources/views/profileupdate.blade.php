@@ -20,11 +20,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-center mt-3 mb-4">Update Profile</h3>
+                <!-- <h3 class="text-center mt-3 mb-4">Update Profile</h3> -->
 
                 <div class="container d-flex flex-column justify-content-center" style="max-width:500px;">
                     <div class="card">
-                        <div class="card-header"><b>Create Employee</b></div>
+                        <div class="card-header"><b>Update Employee</b></div>
                         <?php foreach ($admin as $AdminData) : ?>
                         <?php if ($AdminData['admin_id'] == $adminData['id']) : ?>
                         <div class="card-body">
@@ -63,9 +63,13 @@
                                     <div class="col-6">
                                         <label>Gender</label></br>
                                         <select class="form-select" aria-label="Default select example" name="gender">
-                                            <option selected>Select Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                            <!-- <option value="" disabled selected>Select Gender</option> -->
+                                            <!-- <option value="Male">Male</option>
+                                            <option value="Female">Female</option> -->
+                                            <option value="Male" <?=($AdminData['gender']==='Male' ) ? 'selected' : '' ;
+                                                ?>>Male</option>
+                                            <option value="Female" <?=($AdminData['gender']==='Female' ) ? 'selected' : ''
+                                                ; ?>>Female</option>
                                         </select>
                                     </div>
                                     <div class="col-6">
@@ -84,10 +88,11 @@
                                     </div>
                                     <div class="col-6">
                                         <label for="profile_image">Profile Picture</label></br>
-                                        <input type="file" class="form-control" name="profile_image" id="profile_image"
-                                            required></br>
+                                        <input type="file" class="form-control" name="profile_image"
+                                            id="profile_image"></br>
                                         <label>Country</label></br>
-                                        <input type="text" name="country" id="country" class="form-control" value="<?php echo $AdminData['dob'] ?>" required>
+                                        <input type="text" name="country" id="country" class="form-control" required
+                                            value="<?php echo $AdminData['country'] ?>">
                                         <input type="text" class="form-control" name="admin_id" id="admin_id" hidden
                                             required value="<?php echo $adminData['id']; ?>"></br>
                                     </div>
