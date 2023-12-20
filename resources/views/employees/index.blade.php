@@ -17,7 +17,7 @@
                         </span>
                     </h5>
                 </div>
-                <div class="col-6 d-flex justify-content-end">
+                <div class="col-5 d-flex justify-content-end">
                     <?php if ($adminData['state'] == '1') : ?>
                     <a href="{{ url('/updateProfile') }}" class="btn btn-success btn-sm mb-3 mt-2" style="width:200px;"
                         title="Add New Employeee"> Update Profile
@@ -28,6 +28,11 @@
                         title="Add New Employeee"> Create Profile
                     </a>
                     <?php endif; ?>
+                </div>
+                <div class="col-1 d-flex justify-content-end">
+                    <a href="{{ url('/logout') }}" class="btn btn-danger btn-sm mb-3 mt-2" style="width:100px;"
+                        title="Add New Employeee"> Logout
+                    </a>
                 </div>
             </div>
 

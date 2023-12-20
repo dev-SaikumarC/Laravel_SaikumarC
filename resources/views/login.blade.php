@@ -28,7 +28,9 @@
                                     <input type="email" class="form-control" name="email" id="email"
                                         aria-describedby="emailHelp" placeholder="Enter email" required
                                         value="<?php echo session('emailvalue') ?>">
-                                    <h6 style="color:red;"> <?php echo session('error_email') ?></h6>
+                                    <h6 style="color:red;">
+                                        <?php echo session('error_email') ?>
+                                    </h6>
 
                                 </div>
                                 <div class="form-group">

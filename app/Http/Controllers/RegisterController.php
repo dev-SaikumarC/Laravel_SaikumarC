@@ -7,6 +7,7 @@ use App\Models\ProfileModel;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -51,7 +52,7 @@ class RegisterController extends Controller
                         break;
                     }
                 }
-                
+
                 $session = $request->session();
                 $adminData = [
                     'name' => $admin->name,
@@ -71,6 +72,11 @@ class RegisterController extends Controller
             return redirect()->to('/')->with('error_email', 'Invalid email');
         }
 
+    }
+    public function logout(): RedirectResponse
+    {
+        Auth::logout();
+        return redirect('/');
     }
     /**
      * Show the form for creating a new resource.

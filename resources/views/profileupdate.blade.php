@@ -24,7 +24,17 @@
 
                 <div class="container d-flex flex-column justify-content-center" style="max-width:500px;">
                     <div class="card">
-                        <div class="card-header"><b>Update Employee</b></div>
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-9">
+                                    <b>Update Profile</b>
+                                </div>
+                                <div class="col-3 d-flex justify-content-end">
+                                    <b><a class="text-success text-right" href="<?php echo url('employee') ?>">Go
+                                            Back</a></b>
+                                </div>
+                            </div>
+                        </div>
                         <?php foreach ($admin as $AdminData) : ?>
                         <?php if ($AdminData['admin_id'] == $adminData['id']) : ?>
                         <div class="card-body">
@@ -68,8 +78,8 @@
                                             <option value="Female">Female</option> -->
                                             <option value="Male" <?=($AdminData['gender']==='Male' ) ? 'selected' : '' ;
                                                 ?>>Male</option>
-                                            <option value="Female" <?=($AdminData['gender']==='Female' ) ? 'selected' : ''
-                                                ; ?>>Female</option>
+                                            <option value="Female" <?=($AdminData['gender']==='Female' ) ? 'selected'
+                                                : '' ; ?>>Female</option>
                                         </select>
                                     </div>
                                     <div class="col-6">

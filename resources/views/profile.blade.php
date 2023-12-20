@@ -24,7 +24,17 @@
 
                 <div class="container d-flex flex-column justify-content-center" style="max-width:500px;">
                     <div class="card">
-                        <div class="card-header"><b>Create Employee</b></div>
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-9">
+                                    <b>Create Profile</b>
+                                </div>
+                                <div class="col-3 d-flex justify-content-end">
+                                    <b><a class="text-success text-right" href="<?php echo url('employee') ?>">Go
+                                            Back</a></b>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-body">
 
                             <form action="{{ url('profileCreate') }}" method="post" enctype="multipart/form-data">
