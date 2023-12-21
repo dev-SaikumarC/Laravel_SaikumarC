@@ -121,7 +121,7 @@ class RegisterController extends Controller
             'name' => $validatedData['name'],
         ]);
 
-        return redirect('/')->with('success_message', 'Registered Successfully!');
+        return redirect('employee')->with('success_message', 'Registered Successfully!');
     }
 
     /**

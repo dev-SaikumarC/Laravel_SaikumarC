@@ -38,11 +38,11 @@ class ProfileController extends Controller
             $image = $request->file('profile_image');
 
             // Check if the uploaded file is an image
-            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'pdf'];
             $extension = $image->getClientOriginalExtension();
 
             if (!in_array(strtolower($extension), $allowedExtensions)) {
-                return redirect('createProfile')->with('error_message', 'Invalid file type. Please upload an image.');
+                return redirect('createProfile')->with('error_message', 'Invalid file type.');
             }
 
             $filename = $image->getClientOriginalName();
